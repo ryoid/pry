@@ -4,9 +4,9 @@ Ergonomic function error handling in Typescript without `try catch`. Works for b
 
 ## Installation
 ```
-npm install ts-pry
-yarn add ts-pry
-pnpm add ts-pry
+npm install pry-ts
+yarn add pry-ts
+pnpm add pry-ts
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ Pass a promise or function (sync) to `pry` and it will return a `Result` type.
 Pass your **promise** to `pry` and it will return a `Result` type.
 
 ```typescript
-import { pry } from 'ts-pry';
+import { pry } from 'pry-ts';
 
 const promise = fetch(url).then(res => res.json() as Promise<Data>);
 const result = await pry(promise);
