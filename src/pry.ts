@@ -1,12 +1,24 @@
-export type Result<T, U = Error> =
-  | {
-      readonly ok: true;
-      value: T;
-    }
-  | {
-      readonly ok: false;
-      error: U;
-    };
+export type Result<T, U = Error> = {
+    /**
+     * The operation status.
+     * `true` if the operation succeeded without errors, `false` otherwise.
+     */
+    readonly ok: true;
+    /**
+     * Value returned by the operation.
+     */
+    value: T;
+} | {
+  /**
+   * The operation status.
+   * `true` if the operation succeeded without errors, `false` otherwise.
+   */
+    readonly ok: false;
+    /**
+     * Error thrown by the operation.
+     */
+    error: U;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Func<T> = (...args: any[]) => T;
