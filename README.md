@@ -61,7 +61,7 @@ console.log(result.value);
 >
 >- For **synchronous**, you must pass the **function itself**, not the result of the function.
 
-Don't want to use a library with no downloads? The [implementation is small](https://github.com/ryoid/pro/tree/main/src/pry.ts), copy paste it into your project.
+Don't want to use a library with no downloads? The [implementation is small](https://github.com/ryoid/pry/blob/main/src/pry.ts), copy paste it into your project.
 
 ## Typescript
 
