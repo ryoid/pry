@@ -1,1 +1,1 @@
-export * from './pry';
+export * from './pry'
