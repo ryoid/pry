@@ -17,7 +17,7 @@ type Func<T> = (...args: any[]) => T;
  * @example
  *
  * ```typescript
- * const result = await p(asyncFn(...args));
+ * const result = await pry(asyncFn(...args));
  * if (!result.ok) {
  *   console.error(result.error);
  *   return;
