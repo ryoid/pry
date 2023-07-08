@@ -9,10 +9,7 @@ describe('synchronous functions', () => {
   const syncFn = (): Data => ({ id: 1 });
 
   const syncErrorFn = (): Data => {
-    if ((0 as any) === 'never') {
-      return { id: 1 };
-    }
-    throw new Error('Error');
+    throw new Error('Expected Error');
   };
 
   it('returns result', () => {
@@ -34,7 +31,7 @@ describe('synchronous functions', () => {
     expect(result.ok).toEqual(false);
     // @ts-expect-error - should not be defined
     expect(result.value).toEqual(undefined);
-    expect(result.error).toEqual(undefined);
+    expect(result.error).toEqual(new Error('Expected Error'));
   });
 });
 
@@ -66,6 +63,6 @@ describe('async functions', () => {
     expect(result.ok).toEqual(false);
     // @ts-expect-error - should not be defined
     expect(result.value).toEqual(undefined);
-    expect(result.error).toEqual(undefined);
+    expect(result.error).toEqual(new Error('Expected Error'));
   });
 });
