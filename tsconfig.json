@@ -1,21 +1,10 @@
 {
-  "exclude": ["node_modules"],
-  "include": ["src", "types"],
   "compilerOptions": {
+    "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ESNext"],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./src",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "jsx": "react",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "target": "es2018"
-  }
+    "strict": true
+  },
+  "include": ["src"]
 }

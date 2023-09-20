@@ -4,26 +4,26 @@ export type Result<T, U = Error> =
        * The operation status.
        * `true` if the operation succeeded without errors, `false` otherwise.
        */
-      readonly ok: true
+      readonly ok: true;
       /**
        * Value returned by the operation.
        */
-      value: T
+      value: T;
     }
   | {
       /**
        * The operation status.
        * `true` if the operation succeeded without errors, `false` otherwise.
        */
-      readonly ok: false
+      readonly ok: false;
       /**
        * Error thrown by the operation.
        */
-      error: U
-    }
+      error: U;
+    };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Func<T> = (...args: any[]) => T
+type Func<T> = (...args: any[]) => T;
 
 /**
  * Ergonomic function error handling helper.
@@ -39,22 +39,22 @@ type Func<T> = (...args: any[]) => T
  * console.log(result.value);
  * ```
  */
-export function pry<T, U = Error>(fn: PromiseLike<T>): Promise<Result<T, U>>
-export function pry<T, U = Error>(fn: Func<T>): Result<T, U>
+export function pry<T, U = Error>(fn: PromiseLike<T>): Promise<Result<T, U>>;
+export function pry<T, U = Error>(fn: Func<T>): Result<T, U>;
 export function pry<T, U = Error>(
   fn: PromiseLike<T> | Func<T>,
 ): Promise<Result<T, U>> | Result<T, U> {
-  if (typeof fn === 'function') {
+  if (typeof fn === "function") {
     try {
       return {
         ok: true,
         value: fn(),
-      }
+      };
     } catch (error) {
       return {
         ok: false,
         error: error as U,
-      }
+      };
     }
   }
   return new Promise((resolve) => {
@@ -63,14 +63,14 @@ export function pry<T, U = Error>(
         resolve({
           ok: true,
           value,
-        })
+        });
       },
       (error) => {
         resolve({
           ok: false,
           error: error as U,
-        })
+        });
       },
-    )
-  })
+    );
+  });
 }

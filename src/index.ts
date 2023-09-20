@@ -1,1 +1,1 @@
-export * from './pry'
+export { pry } from "./pry";

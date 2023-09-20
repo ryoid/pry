@@ -1,15 +1,6 @@
 {
-  "root": true,
-  "extends": ["lxsmnsyc/typescript", "prettier"],
-  "ignorePatterns": ["dist"],
+  "extends": ["eslint-config-unjs"],
   "rules": {
-    "@typescript-eslint/no-unsafe-call": "off",
-    "@typescript-eslint/no-unsafe-member-access": "off",
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-unsafe-argument": "off",
-    "no-promise-executor-return": "off"
-  },
-  "parserOptions": {
-    "project": "./tsconfig.eslint.json"
+    "unicorn/no-null": "off"
   }
 }
