@@ -6,9 +6,9 @@ export type Result<T, U = Error> =
        */
       readonly ok: true;
       /**
-       * Value returned by the operation.
+       * Val returned by the operation.
        */
-      value: T;
+      val: T;
     }
   | {
       /**
@@ -19,7 +19,7 @@ export type Result<T, U = Error> =
       /**
        * Error thrown by the operation.
        */
-      error: U;
+      err: U;
     };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,10 +33,10 @@ type Func<T> = (...args: any[]) => T;
  * ```typescript
  * const result = await pry(asyncFn(...args));
  * if (!result.ok) {
- *   console.error(result.error);
+ *   console.error(result.err);
  *   return;
  * }
- * console.log(result.value);
+ * console.log(result.val);
  * ```
  */
 export function pry<T, U = Error>(fn: PromiseLike<T>): Promise<Result<T, U>>;
@@ -48,27 +48,27 @@ export function pry<T, U = Error>(
     try {
       return {
         ok: true,
-        value: fn(),
+        val: fn(),
       };
     } catch (error) {
       return {
         ok: false,
-        error: error as U,
+        err: error as U,
       };
     }
   }
   return new Promise((resolve) => {
     fn.then(
-      (value) => {
+      (val) => {
         resolve({
           ok: true,
-          value,
+          val,
         });
       },
       (error) => {
         resolve({
           ok: false,
-          error: error as U,
+          err: error as U,
         });
       },
     );

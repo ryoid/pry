@@ -3,7 +3,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![Codecov][codecov-src]][codecov-href]
 
-Ergonomic function error handling in Typescript without `try catch`. Works for both async/sync functions and of course, [typesafe](#typescript).
+Ergonomic function error handling in Typescript without `try catch` using a result type. Works for both async/sync functions and of course, [typesafe](#typescript).
 
 ## Getting Started
 
@@ -31,20 +31,20 @@ import { pry } from "pry-ts";
 
 const result = await pry(promise);
 if (!result.ok) {
-  console.error(result.error);
+  console.error(result.err);
   return;
 }
-console.log(result.value);
+console.log(result.val);
 
 // Type definition
 type Result<T, U = Error> =
   | {
       ok: true;
-      value: T;
+      val: T;
     }
   | {
       ok: false;
-      error: U;
+      err: U;
     };
 ```
 
@@ -56,11 +56,11 @@ Also works! Pass your **function** to `pry` and it will return a `Result` type.
 
 ```typescript
 const result = pry(syncFn);
-const result = pry(() => fs.readFileSync("file.txt", "utf-8"));
-if (!result.ok) {
-  return console.error(result.error);
+const file = pry(() => fs.readFileSync("file.txt", "utf-8"));
+if (!file.ok) {
+  return console.error(file.err);
 }
-console.log(result.value);
+console.log(file.val);
 ```
 
 > **❗️Note the arguments**
@@ -78,7 +78,7 @@ Note that you **must** check `ok` before accessing `value` or `error` [(Discrimi
 const result = await pry<Data>(promise);
 if (result.ok) {
   // Checking for `ok` or inversely for error
-  result.value; // Data
+  result.val; // Data
 }
 ```
 

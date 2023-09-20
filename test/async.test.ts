@@ -19,12 +19,12 @@ describe("async functions", () => {
   it("returns result", async () => {
     const result = await pry(asyncFn());
     if (!result.ok) {
-      throw result.error;
+      throw result.err;
     }
     expect(result.ok).toEqual(true);
+    expect(result.val).toEqual({ id: 1 });
     // @ts-expect-error - should not be defined
-    expect(result.error).toEqual(undefined);
-    expect(result.value).toEqual({ id: 1 });
+    expect(result.err).toEqual(undefined);
   });
 
   it("returns error", async () => {
@@ -33,8 +33,8 @@ describe("async functions", () => {
       throw new Error("Shouldn't be ok");
     }
     expect(result.ok).toEqual(false);
+    expect(result.err).toEqual(new Error("Expected Error"));
     // @ts-expect-error - should not be defined
-    expect(result.value).toEqual(undefined);
-    expect(result.error).toEqual(new Error("Expected Error"));
+    expect(result.val).toEqual(undefined);
   });
 });
