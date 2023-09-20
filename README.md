@@ -1,7 +1,6 @@
 # pry
 
 [![npm version][npm-version-src]][npm-version-href]
-[![Codecov][codecov-src]][codecov-href]
 
 Ergonomic function error handling in Typescript without `try catch`. Works for both async/sync functions and of course, [typesafe](#typescript).
 
@@ -29,7 +28,6 @@ Pass your **promise** to `pry` and it will return a `Result` type.
 ```typescript
 import { pry } from "pry-ts";
 
-const promise = fetch(url).then((res) => res.json() as Promise<Data>);
 const result = await pry(promise);
 if (!result.ok) {
   console.error(result.error);
@@ -49,26 +47,25 @@ type Result<T, U = Error> =
     };
 ```
 
+More examples
+
 ### Synchronous (Promise)
 
 Also works! Pass your **function** to `pry` and it will return a `Result` type.
 
 ```typescript
 const result = pry(syncFn);
+const result = pry(() => fs.readFileSync("file.txt", "utf-8"));
 if (!result.ok) {
   return console.error(result.error);
 }
 console.log(result.value);
 ```
 
-### Notes
-
-> **❗️Note the parameter**
+> **❗️Note the arguments**
 >
 > - For **asynchronous**, you must pass the **promise NOT the function** that returns a promise.
 > - For **synchronous**, you must pass the **function itself**, not the result of the function.
-
-Don't want to use a library with no downloads? The [implementation is small](https://github.com/ryoid/pry/blob/main/src/pry.ts), copy paste it into your project.
 
 ## Typescript
 
@@ -97,7 +94,7 @@ const result = await pry<Data, CustomError>(promise);
 
 ### Why `ok`
 
-A pattern that can be seen in javascript with `Response`. Also, drew inspiration from Rust's `Result`.
+A pattern that can be seen in javascript with `Response`.
 
 ```typescript
 const response = await fetch(url);
@@ -140,7 +137,5 @@ Published under [MIT License](./LICENSE).
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/packageName?style=flat&colorA=18181B&colorB=F0DB4F
-[npm-version-href]: https://npmjs.com/package/packageName
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/packageName/main?style=flat&colorA=18181B&colorB=F0DB4F
-[codecov-href]: https://codecov.io/gh/unjs/packageName
+[npm-version-src]: https://img.shields.io/npm/v/pry-ts?style=flat&colorA=18181B&colorB=F0DB4F
+[npm-version-href]: https://npmjs.com/package/pry-ts
