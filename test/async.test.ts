@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, expectTypeOf, it } from "vitest";
 import { pry } from "../src";
 
 type Data = {
@@ -23,6 +23,9 @@ describe("async functions", () => {
     }
     expect(result.ok).toEqual(true);
     expect(result.val).toEqual({ id: 1 });
+
+    expectTypeOf(result.val).toEqualTypeOf<Data>();
+
     // @ts-expect-error - should not be defined
     expect(result.err).toEqual(undefined);
   });
@@ -34,6 +37,7 @@ describe("async functions", () => {
     }
     expect(result.ok).toEqual(false);
     expect(result.err).toEqual(new Error("Expected Error"));
+
     // @ts-expect-error - should not be defined
     expect(result.val).toEqual(undefined);
   });
