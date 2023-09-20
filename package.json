@@ -1,6 +1,6 @@
 {
   "name": "pry-ts",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "description": "Ergonomic function error handling in Typescript",
   "repository": "ryoid/pry",
   "homepage": "https://github.com/ryoid/pry",

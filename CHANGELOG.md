@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.1.1
+
+[compare changes](https://github.com/ryoid/pry/compare/v0.0.4...v0.1.1)
+
+### 🚀 Enhancements
+
+- Result prop shorthand ([5413698](https://github.com/ryoid/pry/commit/5413698))
+
+### ❤️ Contributors
+
+- Ryan Conceicao
+
 ## v0.0.4
 
 
