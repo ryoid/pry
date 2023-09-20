@@ -1,6 +1,7 @@
 # pry
 
 [![npm version][npm-version-src]][npm-version-href]
+[![Codecov][codecov-src]][codecov-href]
 
 Ergonomic function error handling in Typescript without `try catch`. Works for both async/sync functions and of course, [typesafe](#typescript).
 
@@ -139,3 +140,5 @@ Published under [MIT License](./LICENSE).
 
 [npm-version-src]: https://img.shields.io/npm/v/pry-ts?style=flat&colorA=18181B&colorB=F0DB4F
 [npm-version-href]: https://npmjs.com/package/pry-ts
+[codecov-src]: https://img.shields.io/codecov/c/gh/ryoid/pry/main?style=flat&colorA=18181B&colorB=F0DB4F
+[codecov-href]: https://codecov.io/gh/ryoid/pry
